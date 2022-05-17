@@ -2,10 +2,10 @@ package br.com.elo7.sonda.candidato.dto;
 
 import java.util.List;
 
-public class InputDTO {
-	private int width; 
+public class ProbesRequestDTO {
+	private int width;
 	private int height;
-	private List<ProbeDTO> probes;
+	private List<ProbeRequestDTO> probes;
 
 	public int getWidth() {
 		return width;
@@ -19,10 +19,10 @@ public class InputDTO {
 	public void setHeight(int height) {
 		this.height = height;
 	}
-	public List<ProbeDTO> getProbes() {
+	public List<ProbeRequestDTO> getProbes() {
 		return probes;
 	}
-	public void setProbes(List<ProbeDTO> probes) {
+	public void setProbes(List<ProbeRequestDTO> probes) {
 		this.probes = probes;
 	}
 }

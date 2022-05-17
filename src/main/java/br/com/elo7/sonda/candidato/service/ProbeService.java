@@ -7,8 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.google.common.annotations.VisibleForTesting;
-import br.com.elo7.sonda.candidato.dto.InputDTO;
-import br.com.elo7.sonda.candidato.dto.ProbeDTO;
+import br.com.elo7.sonda.candidato.dto.ProbesRequestDTO;
+import br.com.elo7.sonda.candidato.dto.ProbeRequestDTO;
 import br.com.elo7.sonda.candidato.model.Command;
 import br.com.elo7.sonda.candidato.model.Direction;
 import br.com.elo7.sonda.candidato.model.Planet;
@@ -23,11 +23,11 @@ public class ProbeService {
 	@Autowired
 	private Probes probes;
 	
-	public List<Probe> landProbes(InputDTO input) {
-		Planet planet = concertPlanet(input);
+	public List<Probe> landProbes(ProbesRequestDTO probesRequestDTO) {
+		Planet planet = concertPlanet(probesRequestDTO);
 		planets.save(planet);
 		
-		List<Probe> convertedProbes = convertAndMoveProbes(input, planet);
+		List<Probe> convertedProbes = convertAndMoveProbes(probesRequestDTO, planet);
 		convertedProbes.forEach(probe -> probes.save(probe));
 		
 		return convertedProbes;
@@ -108,8 +108,8 @@ public class ProbeService {
 		
 	}
 	
-	private List<Probe> convertAndMoveProbes(InputDTO input, Planet planet) {
-		return input.getProbes()
+	private List<Probe> convertAndMoveProbes(ProbesRequestDTO probesRequestDTO, Planet planet) {
+		return probesRequestDTO.getProbes()
 						.stream().map(probeDto -> {
 							Probe probe = convertProbe(probeDto, planet);
 							moveProbeWithAllCommands(probe, probeDto);
@@ -117,25 +117,25 @@ public class ProbeService {
 						}).collect(Collectors.toList());
 	}
 
-	private void moveProbeWithAllCommands(Probe probe, ProbeDTO probeDTO) {
-		for (char command : probeDTO.getCommands().toCharArray()) {
+	private void moveProbeWithAllCommands(Probe probe, ProbeRequestDTO probeRequestDTO) {
+		for (char command : probeRequestDTO.getCommands().toCharArray()) {
 			applyCommandToProbe(probe, command);
 		}
 	}
 	
-	private Probe convertProbe(ProbeDTO probeDto, Planet planet) {
+	private Probe convertProbe(ProbeRequestDTO probeRequestDTO, Planet planet) {
 		Probe probe = new Probe();
 		probe.setPlanet(planet);
-		probe.setX(probeDto.getX());
-		probe.setY(probeDto.getY());
-		probe.setDirection(probeDto.getDirection());
+		probe.setX(probeRequestDTO.getX());
+		probe.setY(probeRequestDTO.getY());
+		probe.setDirection(probeRequestDTO.getDirection());
 		return probe;
 	}
 	
-	private Planet concertPlanet(InputDTO input) {
+	private Planet concertPlanet(ProbesRequestDTO probesRequestDTO) {
 		Planet planet = new Planet();
-		planet.setHeight(input.getHeight());
-		planet.setWidth(input.getWidth());
+		planet.setHeight(probesRequestDTO.getHeight());
+		planet.setWidth(probesRequestDTO.getWidth());
 		return planet;
 	}
 }

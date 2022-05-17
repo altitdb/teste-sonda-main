@@ -1,6 +1,6 @@
 package br.com.elo7.sonda.candidato.dto;
 
-public class ProbeDTO {
+public class ProbeRequestDTO {
 	private int x; 
 	private int y;
 	private char direction;

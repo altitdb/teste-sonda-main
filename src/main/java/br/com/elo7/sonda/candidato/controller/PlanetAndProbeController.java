@@ -8,7 +8,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
-import br.com.elo7.sonda.candidato.dto.InputDTO;
+import br.com.elo7.sonda.candidato.dto.ProbesRequestDTO;
 import br.com.elo7.sonda.candidato.model.Probe;
 import br.com.elo7.sonda.candidato.service.ProbeService;
 
@@ -18,7 +18,7 @@ public class PlanetAndProbeController {
 	private ProbeService probeService;
 
 	@PostMapping("/planet-with-probes")
-    public ResponseEntity<List<Probe>> register(@RequestBody InputDTO inputDto) {
-		return ResponseEntity.ok(probeService.landProbes(inputDto));        
+    public ResponseEntity<List<Probe>> register(@RequestBody ProbesRequestDTO probesRequestDTO) {
+		return ResponseEntity.ok(probeService.landProbes(probesRequestDTO));
     }
 }
