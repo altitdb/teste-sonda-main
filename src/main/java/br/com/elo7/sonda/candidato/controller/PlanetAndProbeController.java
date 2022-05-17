@@ -27,9 +27,7 @@ public class PlanetAndProbeController {
 
     @PostMapping("/planet-with-probes")
     public @ResponseBody ProbesResponseDTO register(@RequestBody ProbesRequestDTO probesRequestDTO) {
-        Planet planet = new Planet();
-        planet.setHeight(probesRequestDTO.getHeight());
-        planet.setWidth(probesRequestDTO.getWidth());
+        Planet planet = new Planet(probesRequestDTO.getHeight(), probesRequestDTO.getWidth());
 
         List<ProbeCommands<String, Probe>> requestProbes = probesRequestDTO.getProbes().stream()
                 .map(probeRequestDTO ->

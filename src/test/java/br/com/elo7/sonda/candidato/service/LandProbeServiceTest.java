@@ -22,9 +22,7 @@ public class LandProbeServiceTest {
 
 	@Test
 	void should_move_land_probe() {
-		Planet planet = new Planet();
-		planet.setWidth(10);
-		planet.setHeight(10);
+		Planet planet = new Planet(10, 10);
 
 		List<ProbeCommands<String, Probe>> probes = new ArrayList<>();
 		Probe probe01 = new Probe();

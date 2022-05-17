@@ -4,8 +4,14 @@ import java.util.UUID;
 
 public class Planet {
 	private UUID id;
-	private int width;
-	private int height;
+	private Integer width;
+	private Integer height;
+
+	public Planet(Integer height, Integer width) {
+		this.id = UUID.randomUUID();
+		this.width = width;
+		this.height = height;
+	}
 	
 	@Override
 	public int hashCode() {
@@ -23,19 +29,10 @@ public class Planet {
 	public UUID getId() {
 		return id;
 	}
-	public void setId(UUID id) {
-		this.id = id;
-	}
-	public int getWidth() {
+	public Integer getWidth() {
 		return width;
 	}
-	public void setWidth(int width) {
-		this.width = width;
-	}
-	public int getHeight() {
+	public Integer getHeight() {
 		return height;
-	}
-	public void setHeight(int height) {
-		this.height = height;
 	}
 }

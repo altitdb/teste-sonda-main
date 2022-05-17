@@ -16,7 +16,6 @@ class InMemoryDatabase {
 	@Repository
 	public class PlanetDAO implements Planets {
 		public void save(Planet planet) {
-			planet.setId(UUID.randomUUID());
 			probesPerPlanet.put(planet, Lists.newArrayList());
 		}
 
