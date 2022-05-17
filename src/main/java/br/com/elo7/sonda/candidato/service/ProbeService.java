@@ -104,7 +104,6 @@ public class ProbeService {
 				newDirection = Direction.N;
 				break;
 		}
-		System.out.println(newDirection);
 		probe.setDirection(newDirection);
 		
 	}
