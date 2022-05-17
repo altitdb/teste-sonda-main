@@ -1,13 +1,15 @@
 package br.com.elo7.sonda.candidato.model;
 
+import java.util.UUID;
+
 public class Planet {
-	private int id;
+	private UUID id;
 	private int width;
 	private int height;
 	
 	@Override
 	public int hashCode() {
-		return id;
+		return id.hashCode();
 	}
 
 	@Override
@@ -18,10 +20,10 @@ public class Planet {
 		return false;
 	}
 
-	public int getId() {
+	public UUID getId() {
 		return id;
 	}
-	public void setId(int id) {
+	public void setId(UUID id) {
 		this.id = id;
 	}
 	public int getWidth() {

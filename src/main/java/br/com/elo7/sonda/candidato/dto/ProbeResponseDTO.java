@@ -2,17 +2,19 @@ package br.com.elo7.sonda.candidato.dto;
 
 import br.com.elo7.sonda.candidato.model.Direction;
 
+import java.util.UUID;
+
 public class ProbeResponseDTO {
-	private int id;
+	private UUID id;
 	private int x;
 	private int y;
 	private Direction direction;
 	private PlanetResponseDTO planet;
 
-	public int getId() {
+	public UUID getId() {
 		return id;
 	}
-	public void setId(int id) {
+	public void setId(UUID id) {
 		this.id = id;
 	}
 	public int getX() {

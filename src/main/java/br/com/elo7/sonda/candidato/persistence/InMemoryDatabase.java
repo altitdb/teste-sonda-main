@@ -1,9 +1,6 @@
 package br.com.elo7.sonda.candidato.persistence;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
+import java.util.*;
 
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Repository;
@@ -19,15 +16,11 @@ class InMemoryDatabase {
 	@Repository
 	public class PlanetDAO implements Planets {
 		public void save(Planet planet) {
-			planet.setId(generatePlanetId());
+			planet.setId(UUID.randomUUID());
 			probesPerPlanet.put(planet, Lists.newArrayList());
 		}
 
-		private int generatePlanetId() {
-			return probesPerPlanet.size()+1;
-		}
-
-		public Optional<Planet> findById(int id) {
+		public Optional<Planet> findById(UUID id) {
 			return probesPerPlanet.keySet()
 					.stream()
 					.filter(planet -> planet.getId() == id)
@@ -40,16 +33,12 @@ class InMemoryDatabase {
 		@Override
 		public void save(Probe probe) {
 			List<Probe> probes = probesPerPlanet.get(probe.getPlanet());
-			probe.setId(generateProbeId(probe, probes.size()));
+			probe.setId(UUID.randomUUID());
 			probes.add(probe);
 		}
 
-		private int generateProbeId(Probe probe, int size) {
-			return 7*(size+1)+11*probe.getPlanet().getId();
-		}
-
 		@Override
-		public Optional<Probe> findById(int id) {
+		public Optional<Probe> findById(UUID id) {
 			return probesPerPlanet.entrySet().stream().flatMap(
 						entry -> entry.getValue()
 										.stream()

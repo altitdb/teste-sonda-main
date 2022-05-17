@@ -1,17 +1,19 @@
 package br.com.elo7.sonda.candidato.model;
 
+import java.util.UUID;
+
 public class Probe {
-    private int id;
+    private UUID id;
     private int x;
     private int y;
     private Direction direction;
     private Planet planet;
 
-    public int getId() {
+    public UUID getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(UUID id) {
         this.id = id;
     }
 
