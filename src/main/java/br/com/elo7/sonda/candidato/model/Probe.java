@@ -1,7 +1,5 @@
 package br.com.elo7.sonda.candidato.model;
 
-import br.com.elo7.sonda.candidato.dto.ProbeRequestDTO;
-
 public class Probe {
     private int id;
     private int x;
