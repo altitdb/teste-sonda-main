@@ -4,7 +4,7 @@ public class Probe {
     private int id;
     private int x;
     private int y;
-    private char direction;
+    private Direction direction;
     private Planet planet;
 
     public int getId() {
@@ -31,11 +31,11 @@ public class Probe {
         this.y = y;
     }
 
-    public char getDirection() {
+    public Direction getDirection() {
         return direction;
     }
 
-    public void setDirection(char direction) {
+    public void setDirection(Direction direction) {
         this.direction = direction;
     }
 
@@ -49,19 +49,19 @@ public class Probe {
 
     public void executeCommands(char[] commands) {
         for (char command : commands) {
-            this.executeCommand(command);
+            this.executeCommand(Command.valueOf(String.valueOf(command)));
         }
     }
 
-    public void executeCommand(char command) {
+    public void executeCommand(Command command) {
         switch (command) {
-            case Command.R:
+            case R:
                 this.turnProbeRight();
                 break;
-            case Command.L:
+            case L:
                 this.turnProbeLeft();
                 break;
-            case Command.M:
+            case M:
                 this.moveProbeForward();
                 break;
         }
@@ -71,16 +71,16 @@ public class Probe {
         int newX = this.getX();
         int newY = this.getY();
         switch (this.getDirection()) {
-            case Direction.N:
+            case NORTH:
                 newY++;
                 break;
-            case Direction.W:
+            case WEST:
                 newX--;
                 break;
-            case Direction.S:
+            case SOUTH:
                 newY--;
                 break;
-            case Direction.E:
+            case EAST:
                 newX++;
                 break;
         }
@@ -89,38 +89,38 @@ public class Probe {
     }
 
     private void turnProbeLeft() {
-        char newDirection = Direction.N;
+        Direction newDirection = Direction.NORTH;
         switch (this.getDirection()) {
-            case Direction.N:
-                newDirection = Direction.W;
+            case NORTH:
+                newDirection = Direction.WEST;
                 break;
-            case Direction.W:
-                newDirection = Direction.S;
+            case WEST:
+                newDirection = Direction.SOUTH;
                 break;
-            case Direction.S:
-                newDirection = Direction.E;
+            case SOUTH:
+                newDirection = Direction.EAST;
                 break;
-            case Direction.E:
-                newDirection = Direction.N;
+            case EAST:
+                newDirection = Direction.NORTH;
                 break;
         }
         this.direction = newDirection;
     }
 
     private void turnProbeRight() {
-        char newDirection = Direction.N;
+        Direction newDirection = Direction.NORTH;
         switch (this.getDirection()) {
-            case Direction.N:
-                newDirection = Direction.E;
+            case NORTH:
+                newDirection = Direction.EAST;
                 break;
-            case Direction.E:
-                newDirection = Direction.S;
+            case EAST:
+                newDirection = Direction.SOUTH;
                 break;
-            case Direction.S:
-                newDirection = Direction.W;
+            case SOUTH:
+                newDirection = Direction.WEST;
                 break;
-            case Direction.W:
-                newDirection = Direction.N;
+            case WEST:
+                newDirection = Direction.NORTH;
                 break;
         }
         this.direction = newDirection;

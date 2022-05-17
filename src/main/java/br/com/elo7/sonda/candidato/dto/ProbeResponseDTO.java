@@ -1,10 +1,12 @@
 package br.com.elo7.sonda.candidato.dto;
 
+import br.com.elo7.sonda.candidato.model.Direction;
+
 public class ProbeResponseDTO {
 	private int id;
 	private int x;
 	private int y;
-	private char direction;
+	private Direction direction;
 	private PlanetResponseDTO planet;
 
 	public int getId() {
@@ -25,10 +27,10 @@ public class ProbeResponseDTO {
 	public void setY(int y) {
 		this.y = y;
 	}
-	public char getDirection() {
+	public Direction getDirection() {
 		return direction;
 	}
-	public void setDirection(char direction) {
+	public void setDirection(Direction direction) {
 		this.direction = direction;
 	}
 	public PlanetResponseDTO getPlanet() {

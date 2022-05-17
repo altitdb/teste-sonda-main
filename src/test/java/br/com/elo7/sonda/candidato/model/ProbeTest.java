@@ -9,65 +9,65 @@ public class ProbeTest {
     @Test
     void should_change_probe_direction_from_N_To_W_when_receive_the_command_L() {
         Probe probe = new Probe();
-        probe.setDirection('N');
-        probe.executeCommand('L');
-        assertEquals('W', probe.getDirection());
+        probe.setDirection(Direction.NORTH);
+        probe.executeCommand(Command.L);
+        assertEquals(Direction.WEST, probe.getDirection());
     }
 
     @Test
     void should_change_probe_direction_from_W_To_S_when_receive_the_command_L() {
         Probe probe = new Probe();
-        probe.setDirection('W');
-        probe.executeCommand('L');
-        assertEquals('S', probe.getDirection());
+        probe.setDirection(Direction.WEST);
+        probe.executeCommand(Command.L);
+        assertEquals(Direction.SOUTH, probe.getDirection());
     }
 
     @Test
     void should_change_probe_direction_from_S_To_E_when_receive_the_command_L() {
         Probe probe = new Probe();
-        probe.setDirection('S');
-        probe.executeCommand('L');
-        assertEquals('E', probe.getDirection());
+        probe.setDirection(Direction.SOUTH);
+        probe.executeCommand(Command.L);
+        assertEquals(Direction.EAST, probe.getDirection());
     }
 
     @Test
     void should_change_probe_direction_from_E_To_N_when_receive_the_command_L() {
         Probe probe = new Probe();
-        probe.setDirection('E');
-        probe.executeCommand('L');
-        assertEquals('N', probe.getDirection());
+        probe.setDirection(Direction.EAST);
+        probe.executeCommand(Command.L);
+        assertEquals(Direction.NORTH, probe.getDirection());
     }
 
     @Test
     void should_change_probe_direction_from_N_To_E_when_receive_the_command_R() {
         Probe probe = new Probe();
-        probe.setDirection('N');
-        probe.executeCommand('R');
-        assertEquals('E', probe.getDirection());
+        probe.setDirection(Direction.NORTH);
+        probe.executeCommand(Command.R);
+        assertEquals(Direction.EAST, probe.getDirection());
     }
 
     @Test
     void should_change_probe_direction_from_E_To_S_when_receive_the_command_R() {
         Probe probe = new Probe();
-        probe.setDirection('E');
-        probe.executeCommand('R');
-        assertEquals('S', probe.getDirection());
+        probe.setDirection(Direction.EAST);
+        probe.executeCommand(Command.R);
+        assertEquals(Direction.SOUTH, probe.getDirection());
     }
 
     @Test
     void should_change_probe_direction_from_S_To_W_when_receive_the_command_R() {
         Probe probe = new Probe();
-        probe.setDirection('S');
-        probe.executeCommand('R');
-        assertEquals('W', probe.getDirection());
+        probe.setDirection(Direction.SOUTH);
+        probe.executeCommand(Command.R);
+        assertEquals(Direction.WEST, probe.getDirection());
     }
 
     @Test
     void should_change_probe_direction_from_W_To_N_when_receive_the_command_R() {
         Probe probe = new Probe();
-        probe.setDirection('W');
-        probe.executeCommand('R');
-        assertEquals('N', probe.getDirection());
+        probe.setDirection(Direction.WEST);
+        probe.executeCommand(Command.R);
+        assertEquals(Direction.NORTH, probe.getDirection());
     }
 
     @Test
@@ -75,11 +75,11 @@ public class ProbeTest {
         Probe probe = new Probe();
         probe.setX(1);
         probe.setY(1);
-        probe.setDirection('N');
-        probe.executeCommand('M');
+        probe.setDirection(Direction.NORTH);
+        probe.executeCommand(Command.M);
         assertEquals(2, probe.getY());
         assertEquals(1, probe.getX());
-        assertEquals('N', probe.getDirection());
+        assertEquals(Direction.NORTH, probe.getDirection());
     }
 
     @Test
@@ -87,11 +87,11 @@ public class ProbeTest {
         Probe probe = new Probe();
         probe.setX(1);
         probe.setY(1);
-        probe.setDirection('S');
-        probe.executeCommand('M');
+        probe.setDirection(Direction.SOUTH);
+        probe.executeCommand(Command.M);
         assertEquals(0, probe.getY());
         assertEquals(1, probe.getX());
-        assertEquals('S', probe.getDirection());
+        assertEquals(Direction.SOUTH, probe.getDirection());
     }
 
     @Test
@@ -99,11 +99,11 @@ public class ProbeTest {
         Probe probe = new Probe();
         probe.setX(1);
         probe.setY(1);
-        probe.setDirection('W');
-        probe.executeCommand('M');
+        probe.setDirection(Direction.WEST);
+        probe.executeCommand(Command.M);
         assertEquals(0, probe.getX());
         assertEquals(1, probe.getY());
-        assertEquals('W', probe.getDirection());
+        assertEquals(Direction.WEST, probe.getDirection());
     }
 
     @Test
@@ -111,10 +111,10 @@ public class ProbeTest {
         Probe probe = new Probe();
         probe.setX(1);
         probe.setY(1);
-        probe.setDirection('E');
-        probe.executeCommand('M');
+        probe.setDirection(Direction.EAST);
+        probe.executeCommand(Command.M);
         assertEquals(2, probe.getX());
         assertEquals(1, probe.getY());
-        assertEquals('E', probe.getDirection());
+        assertEquals(Direction.EAST, probe.getDirection());
     }
 }
