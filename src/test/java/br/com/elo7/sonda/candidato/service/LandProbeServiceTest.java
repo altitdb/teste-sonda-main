@@ -37,7 +37,7 @@ class LandProbeServiceTest {
 		probe02.setDirection(Direction.EAST);
 		probes.add(new ProbeCommands<>("MMRMMRMRRM", probe02));
 
-		List<Probe> moves = subject.probe(planet, probes);
+		List<Probe> moves = subject.probe(probes);
 
 		assertEquals(1, moves.get(0).getX());
 		assertEquals(3, moves.get(0).getY());

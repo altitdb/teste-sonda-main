@@ -33,7 +33,7 @@ public class PlanetAndProbeController {
                 .map(probeRequestDTO ->
                         new ProbeCommands<>(probeRequestDTO.getCommands(), convertToModel(planet, probeRequestDTO)))
                 .collect(Collectors.toList());
-        List<Probe> probes = landProbeService.probe(planet, requestProbes);
+        List<Probe> probes = landProbeService.probe(requestProbes);
         List<ProbeResponseDTO> probesResponseDTO = probes.stream()
                 .map(this::convertToDto)
                 .collect(Collectors.toList());

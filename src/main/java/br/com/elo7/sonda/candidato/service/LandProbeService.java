@@ -1,16 +1,14 @@
 package br.com.elo7.sonda.candidato.service;
 
-import java.util.List;
-import java.util.stream.Collectors;
-
+import br.com.elo7.sonda.candidato.model.Probe;
 import br.com.elo7.sonda.candidato.model.ProbeCommands;
+import br.com.elo7.sonda.candidato.persistence.Planets;
+import br.com.elo7.sonda.candidato.persistence.Probes;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import br.com.elo7.sonda.candidato.model.Planet;
-import br.com.elo7.sonda.candidato.model.Probe;
-import br.com.elo7.sonda.candidato.persistence.Planets;
-import br.com.elo7.sonda.candidato.persistence.Probes;
+import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class LandProbeService {
@@ -19,11 +17,11 @@ public class LandProbeService {
     @Autowired
     private Probes probesRepository;
 
-    public List<Probe> probe(Planet planet, List<ProbeCommands<String, Probe>> probes) {
-        planetsRepository.save(planet);
+    public List<Probe> probe(List<ProbeCommands<String, Probe>> probes) {
         List<Probe> executedMoves = probes.stream().map(register -> {
             Probe probe = register.getValue();
             probe.executeCommands(register.getKey().toCharArray());
+            planetsRepository.save(probe.getPlanet());
             return probe;
         }).collect(Collectors.toList());
         executedMoves.forEach(probe -> probesRepository.save(probe));
