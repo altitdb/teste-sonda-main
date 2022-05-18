@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 @Controller
 public class PlanetAndProbeController {
@@ -30,11 +29,11 @@ public class PlanetAndProbeController {
         List<ProbeCommands<String, Probe>> requestProbes = probesRequestDTO.getProbes().stream()
                 .map(probeRequestDTO ->
                         new ProbeCommands<>(probeRequestDTO.getCommands(), convertToModel(planet, probeRequestDTO)))
-                .collect(Collectors.toList());
+                .toList();
         List<Probe> probes = landProbeService.probe(requestProbes);
         List<ProbeResponseDTO> probesResponseDTO = probes.stream()
                 .map(this::convertToDto)
-                .collect(Collectors.toList());
+                .toList();
         return new ProbesResponseDTO(probesResponseDTO);
     }
 
