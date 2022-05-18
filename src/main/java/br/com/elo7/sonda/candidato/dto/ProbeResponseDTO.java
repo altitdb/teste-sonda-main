@@ -1,6 +1,6 @@
 package br.com.elo7.sonda.candidato.dto;
 
-import br.com.elo7.sonda.candidato.model.Direction;
+import br.com.elo7.sonda.candidato.constants.Direction;
 
 import java.util.UUID;
 

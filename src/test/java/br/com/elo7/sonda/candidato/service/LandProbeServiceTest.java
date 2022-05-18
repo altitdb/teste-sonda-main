@@ -1,6 +1,6 @@
 package br.com.elo7.sonda.candidato.service;
 
-import br.com.elo7.sonda.candidato.model.Direction;
+import br.com.elo7.sonda.candidato.constants.Direction;
 import br.com.elo7.sonda.candidato.model.Planet;
 import br.com.elo7.sonda.candidato.model.Probe;
 import br.com.elo7.sonda.candidato.model.ProbeCommands;

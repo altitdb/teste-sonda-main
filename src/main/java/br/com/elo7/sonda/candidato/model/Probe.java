@@ -1,5 +1,8 @@
 package br.com.elo7.sonda.candidato.model;
 
+import br.com.elo7.sonda.candidato.constants.Command;
+import br.com.elo7.sonda.candidato.constants.Direction;
+
 import java.util.UUID;
 
 public class Probe {
