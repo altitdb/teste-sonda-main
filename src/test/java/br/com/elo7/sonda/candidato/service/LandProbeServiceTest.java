@@ -40,17 +40,17 @@ class LandProbeServiceTest {
 
 		List<Probe> moves = subject.probe(planet, probes);
 
-		Assertions.assertEquals(1, moves.get(0).getX());
-		Assertions.assertEquals(3, moves.get(0).getY());
-		Assertions.assertEquals(Direction.NORTH, moves.get(0).getDirection());
-		Assertions.assertEquals(10, moves.get(0).getPlanet().getWidth());
-		Assertions.assertEquals(10, moves.get(0).getPlanet().getHeight());
+		assertEquals(1, moves.get(0).getX());
+		assertEquals(3, moves.get(0).getY());
+		assertEquals(Direction.NORTH, moves.get(0).getDirection());
+		assertEquals(10, moves.get(0).getPlanet().getWidth());
+		assertEquals(10, moves.get(0).getPlanet().getHeight());
 
-		Assertions.assertEquals(5, moves.get(1).getX());
-		Assertions.assertEquals(1, moves.get(1).getY());
-		Assertions.assertEquals(Direction.EAST, moves.get(1).getDirection());
-		Assertions.assertEquals(10, moves.get(1).getPlanet().getWidth());
-		Assertions.assertEquals(10, moves.get(1).getPlanet().getHeight());
+		assertEquals(5, moves.get(1).getX());
+		assertEquals(1, moves.get(1).getY());
+		assertEquals(Direction.EAST, moves.get(1).getDirection());
+		assertEquals(10, moves.get(1).getPlanet().getWidth());
+		assertEquals(10, moves.get(1).getPlanet().getHeight());
 	}
 
 }
