@@ -9,7 +9,7 @@ public class ProbeCommandsTest {
 
     @Test
     void should_create_new_probe_with_commands() {
-        Probe probe = new Probe();
+        Probe probe = new Probe(null, null, null);
         ProbeCommands<String, Probe> probeCommands = new ProbeCommands<>("LMLMLMLMM", probe);
         Assertions.assertEquals("LMLMLMLMM", probeCommands.getKey());
         Assertions.assertEquals(probe, probeCommands.getValue());
@@ -19,7 +19,7 @@ public class ProbeCommandsTest {
     @ValueSource(strings = {"", "ABC", "LM LM"})
     void should_not_create_probe_with_invalid_command(String commands) {
         RuntimeException exception = Assertions.assertThrows(RuntimeException.class, () ->
-                new ProbeCommands<>(commands, new Probe()));
+                new ProbeCommands<>(commands, new Probe(null, null, null)));
         Assertions.assertEquals("Invalid commands", exception.getMessage());
     }
 
@@ -32,7 +32,7 @@ public class ProbeCommandsTest {
 
     @Test
     void should_not_update_probe_with_incorret_value() {
-        ProbeCommands<String, Probe> probeCommands = new ProbeCommands<>("LMR", new Probe());
+        ProbeCommands<String, Probe> probeCommands = new ProbeCommands<>("LMR", new Probe(null, null, null));
         RuntimeException exception = Assertions.assertThrows(RuntimeException.class, () ->
                 probeCommands.setValue(null));
         Assertions.assertEquals("Invalid probe", exception.getMessage());

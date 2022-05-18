@@ -5,40 +5,40 @@ import br.com.elo7.sonda.candidato.constants.Direction;
 import java.util.UUID;
 
 public class ProbeResponseDTO {
-	private UUID id;
-	private int x;
-	private int y;
-	private Direction direction;
-	private PlanetResponseDTO planet;
+    private UUID id;
+    private CoordinateDTO coordinate;
+    private Direction direction;
+    private PlanetResponseDTO planet;
 
-	public UUID getId() {
-		return id;
-	}
-	public void setId(UUID id) {
-		this.id = id;
-	}
-	public int getX() {
-		return x;
-	}
-	public void setX(int x) {
-		this.x = x;
-	}
-	public int getY() {
-		return y;
-	}
-	public void setY(int y) {
-		this.y = y;
-	}
-	public Direction getDirection() {
-		return direction;
-	}
-	public void setDirection(Direction direction) {
-		this.direction = direction;
-	}
-	public PlanetResponseDTO getPlanet() {
-		return planet;
-	}
-	public void setPlanet(PlanetResponseDTO planet) {
-		this.planet = planet;
-	}
+    public UUID getId() {
+        return id;
+    }
+
+    public void setId(UUID id) {
+        this.id = id;
+    }
+
+    public CoordinateDTO getCoordinate() {
+        return coordinate;
+    }
+
+    public void setCoordinate(CoordinateDTO coordinate) {
+        this.coordinate = coordinate;
+    }
+
+    public Direction getDirection() {
+        return direction;
+    }
+
+    public void setDirection(Direction direction) {
+        this.direction = direction;
+    }
+
+    public PlanetResponseDTO getPlanet() {
+        return planet;
+    }
+
+    public void setPlanet(PlanetResponseDTO planet) {
+        this.planet = planet;
+    }
 }

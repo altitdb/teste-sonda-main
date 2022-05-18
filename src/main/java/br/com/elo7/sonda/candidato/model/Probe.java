@@ -7,49 +7,32 @@ import java.util.UUID;
 
 public class Probe {
     private UUID id;
-    private int x;
-    private int y;
-    private Direction direction;
+
     private Planet planet;
+    private Coordinate coordinate;
+    private Direction direction;
+
+    public Probe(Planet planet, Coordinate coordinate, Direction direction) {
+        this.id = UUID.randomUUID();
+        this.planet = planet;
+        this.coordinate = coordinate;
+        this.direction = direction;
+    }
 
     public UUID getId() {
         return id;
-    }
-
-    public void setId(UUID id) {
-        this.id = id;
-    }
-
-    public int getX() {
-        return x;
-    }
-
-    public void setX(int x) {
-        this.x = x;
-    }
-
-    public int getY() {
-        return y;
-    }
-
-    public void setY(int y) {
-        this.y = y;
-    }
-
-    public Direction getDirection() {
-        return direction;
-    }
-
-    public void setDirection(Direction direction) {
-        this.direction = direction;
     }
 
     public Planet getPlanet() {
         return planet;
     }
 
-    public void setPlanet(Planet planet) {
-        this.planet = planet;
+    public Coordinate getCoordinate() {
+        return coordinate;
+    }
+
+    public Direction getDirection() {
+        return direction;
     }
 
     public void executeCommands(char[] commands) {
@@ -73,61 +56,53 @@ public class Probe {
     }
 
     private void moveProbeForward() {
-        int newX = this.getX();
-        int newY = this.getY();
-        switch (this.getDirection()) {
+        switch (this.direction) {
             case NORTH:
-                newY++;
+                this.coordinate.addPositionY();
                 break;
             case WEST:
-                newX--;
+                this.coordinate.removePositionX();
                 break;
             case SOUTH:
-                newY--;
+                this.coordinate.removePositionY();
                 break;
             case EAST:
-                newX++;
+                this.coordinate.addPositionX();
                 break;
         }
-        this.x = newX;
-        this.y = newY;
     }
 
     private void turnProbeLeft() {
-        Direction newDirection = Direction.NORTH;
-        switch (this.getDirection()) {
+        switch (this.direction) {
             case NORTH:
-                newDirection = Direction.WEST;
+                this.direction = Direction.WEST;
                 break;
             case WEST:
-                newDirection = Direction.SOUTH;
+                this.direction = Direction.SOUTH;
                 break;
             case SOUTH:
-                newDirection = Direction.EAST;
+                this.direction = Direction.EAST;
                 break;
             case EAST:
-                newDirection = Direction.NORTH;
+                this.direction = Direction.NORTH;
                 break;
         }
-        this.direction = newDirection;
     }
 
     private void turnProbeRight() {
-        Direction newDirection = Direction.NORTH;
-        switch (this.getDirection()) {
+        switch (this.direction) {
             case NORTH:
-                newDirection = Direction.EAST;
+                this.direction = Direction.EAST;
                 break;
             case EAST:
-                newDirection = Direction.SOUTH;
+                this.direction = Direction.SOUTH;
                 break;
             case SOUTH:
-                newDirection = Direction.WEST;
+                this.direction = Direction.WEST;
                 break;
             case WEST:
-                newDirection = Direction.NORTH;
+                this.direction = Direction.NORTH;
                 break;
         }
-        this.direction = newDirection;
     }
 }

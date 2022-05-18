@@ -32,7 +32,6 @@ class InMemoryDatabase {
 		@Override
 		public void save(Probe probe) {
 			List<Probe> probes = probesPerPlanet.get(probe.getPlanet());
-			probe.setId(UUID.randomUUID());
 			probes.add(probe);
 		}
 

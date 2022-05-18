@@ -1,9 +1,7 @@
 package br.com.elo7.sonda.candidato.controller;
 
-import br.com.elo7.sonda.candidato.dto.ProbeRequestDTO;
-import br.com.elo7.sonda.candidato.dto.ProbeResponseDTO;
-import br.com.elo7.sonda.candidato.dto.ProbesRequestDTO;
-import br.com.elo7.sonda.candidato.dto.ProbesResponseDTO;
+import br.com.elo7.sonda.candidato.dto.*;
+import br.com.elo7.sonda.candidato.model.Coordinate;
 import br.com.elo7.sonda.candidato.model.Planet;
 import br.com.elo7.sonda.candidato.model.Probe;
 import br.com.elo7.sonda.candidato.model.ProbeCommands;
@@ -45,11 +43,8 @@ public class PlanetAndProbeController {
     }
 
     private Probe convertToModel(Planet planet, ProbeRequestDTO probeRequestDTO) {
-        Probe probe = new Probe();
-        probe.setDirection(probeRequestDTO.getDirection());
-        probe.setX(probeRequestDTO.getX());
-        probe.setY(probeRequestDTO.getY());
-        probe.setPlanet(planet);
-        return probe;
+        CoordinateDTO coordinateDTO = probeRequestDTO.getCoordinate();
+        Coordinate coordinate = new Coordinate(coordinateDTO.getX(), coordinateDTO.getY());
+        return new Probe(planet, coordinate, probeRequestDTO.getDirection());
     }
 }
