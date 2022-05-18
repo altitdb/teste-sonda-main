@@ -6,7 +6,7 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class ProbeTest {
+class ProbeTest {
 
     @Test
     void should_change_probe_direction_from_N_To_W_when_receive_the_command_L() {
