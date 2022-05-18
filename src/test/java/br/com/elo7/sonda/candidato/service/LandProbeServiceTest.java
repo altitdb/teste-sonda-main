@@ -15,7 +15,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @SpringBootTest
-public class LandProbeServiceTest {
+class LandProbeServiceTest {
 	
 	@Autowired
 	private LandProbeService subject;
@@ -40,17 +40,17 @@ public class LandProbeServiceTest {
 
 		List<Probe> moves = subject.probe(planet, probes);
 
-		Assertions.assertEquals(moves.get(0).getX(), 1);
-		Assertions.assertEquals(moves.get(0).getY(), 3);
-		Assertions.assertEquals(moves.get(0).getDirection(), Direction.NORTH);
-		Assertions.assertEquals(moves.get(0).getPlanet().getWidth(), 10);
-		Assertions.assertEquals(moves.get(0).getPlanet().getHeight(), 10);
+		Assertions.assertEquals(1, moves.get(0).getX());
+		Assertions.assertEquals(3, moves.get(0).getY());
+		Assertions.assertEquals(Direction.NORTH, moves.get(0).getDirection());
+		Assertions.assertEquals(10, moves.get(0).getPlanet().getWidth());
+		Assertions.assertEquals(10, moves.get(0).getPlanet().getHeight());
 
-		Assertions.assertEquals(moves.get(1).getX(), 5);
-		Assertions.assertEquals(moves.get(1).getY(), 1);
-		Assertions.assertEquals(moves.get(1).getDirection(), Direction.EAST);
-		Assertions.assertEquals(moves.get(1).getPlanet().getWidth(), 10);
-		Assertions.assertEquals(moves.get(1).getPlanet().getHeight(), 10);
+		Assertions.assertEquals(5, moves.get(1).getX());
+		Assertions.assertEquals(1, moves.get(1).getY());
+		Assertions.assertEquals(Direction.EAST, moves.get(1).getDirection());
+		Assertions.assertEquals(10, moves.get(1).getPlanet().getWidth());
+		Assertions.assertEquals(10, moves.get(1).getPlanet().getHeight());
 	}
 
 }
