@@ -16,7 +16,7 @@ public class LandProbeService {
     @Autowired
     private Probes probesRepository;
 
-    public List<Probe> probe(List<ProbeCommands<String, Probe>> probes) {
+    public List<Probe> probe(List<ProbeCommands> probes) {
         List<Probe> executedMoves = probes.stream().map(register -> {
             Probe probe = register.getValue();
             probe.executeCommands(register.getKey().toCharArray());

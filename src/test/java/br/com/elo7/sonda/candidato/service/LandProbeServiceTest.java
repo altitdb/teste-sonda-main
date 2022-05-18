@@ -24,11 +24,11 @@ class LandProbeServiceTest {
 	void should_move_land_probe() {
 		Planet planet = new Planet(10, 10);
 
-		List<ProbeCommands<String, Probe>> probes = new ArrayList<>();
+		List<ProbeCommands> probes = new ArrayList<>();
 		Probe probe01 = new Probe(planet, new Coordinate(1, 2), Direction.NORTH);
-		probes.add(new ProbeCommands<>("LMLMLMLMM", probe01));
+		probes.add(new ProbeCommands("LMLMLMLMM", probe01));
 		Probe probe02 = new Probe(planet, new Coordinate(3, 3), Direction.EAST);
-		probes.add(new ProbeCommands<>("MMRMMRMRRM", probe02));
+		probes.add(new ProbeCommands("MMRMMRMRRM", probe02));
 
 		List<Probe> moves = subject.probe(probes);
 

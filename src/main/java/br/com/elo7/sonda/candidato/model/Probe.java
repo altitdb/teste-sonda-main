@@ -3,6 +3,7 @@ package br.com.elo7.sonda.candidato.model;
 import br.com.elo7.sonda.candidato.constants.Command;
 import br.com.elo7.sonda.candidato.constants.Direction;
 
+import java.util.Objects;
 import java.util.UUID;
 
 public class Probe {
@@ -104,5 +105,18 @@ public class Probe {
                 this.direction = Direction.NORTH;
                 break;
         }
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Probe probe = (Probe) o;
+        return Objects.equals(id, probe.id) && Objects.equals(planet, probe.planet) && Objects.equals(coordinate, probe.coordinate) && direction == probe.direction;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, planet, coordinate, direction);
     }
 }

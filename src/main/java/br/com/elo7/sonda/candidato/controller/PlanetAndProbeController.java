@@ -26,9 +26,9 @@ public class PlanetAndProbeController {
     public @ResponseBody ProbesResponseDTO register(@RequestBody ProbesRequestDTO probesRequestDTO) {
         Planet planet = new Planet(probesRequestDTO.getHeight(), probesRequestDTO.getWidth());
 
-        List<ProbeCommands<String, Probe>> requestProbes = probesRequestDTO.getProbes().stream()
+        List<ProbeCommands> requestProbes = probesRequestDTO.getProbes().stream()
                 .map(probeRequestDTO ->
-                        new ProbeCommands<>(probeRequestDTO.getCommands(), convertToModel(planet, probeRequestDTO)))
+                        new ProbeCommands(probeRequestDTO.getCommands(), convertToModel(planet, probeRequestDTO)))
                 .toList();
         List<Probe> probes = landProbeService.probe(requestProbes);
         List<ProbeResponseDTO> probesResponseDTO = probes.stream()
