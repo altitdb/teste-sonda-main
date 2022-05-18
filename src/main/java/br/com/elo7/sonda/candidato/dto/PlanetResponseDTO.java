@@ -1,7 +1,10 @@
 package br.com.elo7.sonda.candidato.dto;
 
+import io.swagger.annotations.ApiModel;
+
 import java.util.UUID;
 
+@ApiModel("planet")
 public class PlanetResponseDTO {
 	private UUID id;
 	private int width;

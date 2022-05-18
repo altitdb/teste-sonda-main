@@ -3,7 +3,7 @@ package br.com.elo7.sonda.candidato.controller;
 import br.com.elo7.sonda.candidato.constants.Direction;
 import br.com.elo7.sonda.candidato.dto.CoordinateDTO;
 import br.com.elo7.sonda.candidato.dto.ProbeRequestDTO;
-import br.com.elo7.sonda.candidato.dto.ProbesRequestDTO;
+import br.com.elo7.sonda.candidato.dto.PlanetProbesRequestDTO;
 import br.com.elo7.sonda.candidato.model.Coordinate;
 import br.com.elo7.sonda.candidato.model.Planet;
 import br.com.elo7.sonda.candidato.model.Probe;
@@ -50,7 +50,7 @@ class PlanetAndProbeControllerTest {
         ObjectMapper mapper = new ObjectMapper();
         mapper.configure(SerializationFeature.WRAP_ROOT_VALUE, false);
         ObjectWriter ow = mapper.writer().withDefaultPrettyPrinter();
-        ProbesRequestDTO probesRequestDTO = new ProbesRequestDTO();
+        PlanetProbesRequestDTO probesRequestDTO = new PlanetProbesRequestDTO();
         probesRequestDTO.setHeight(10);
         probesRequestDTO.setWidth(10);
         ProbeRequestDTO probeRequestDTO = new ProbeRequestDTO();

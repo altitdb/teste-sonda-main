@@ -1,9 +1,11 @@
 package br.com.elo7.sonda.candidato.dto;
 
 import br.com.elo7.sonda.candidato.constants.Direction;
+import io.swagger.annotations.ApiModel;
 
 import java.util.UUID;
 
+@ApiModel("probe")
 public class ProbeResponseDTO {
     private UUID id;
     private CoordinateDTO coordinate;

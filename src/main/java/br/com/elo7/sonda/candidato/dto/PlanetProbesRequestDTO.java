@@ -1,8 +1,11 @@
 package br.com.elo7.sonda.candidato.dto;
 
+import io.swagger.annotations.ApiModel;
+
 import java.util.List;
 
-public class ProbesRequestDTO {
+@ApiModel("planetProbes")
+public class PlanetProbesRequestDTO {
 	private int width;
 	private int height;
 	private List<ProbeRequestDTO> probes;

@@ -1,5 +1,9 @@
 package br.com.elo7.sonda.candidato.dto;
 
+import io.swagger.annotations.ApiModel;
+
+@ApiModel("coordinate")
+
 public class CoordinateDTO {
 
     private Integer x;

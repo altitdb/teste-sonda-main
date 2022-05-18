@@ -1,7 +1,9 @@
 package br.com.elo7.sonda.candidato.dto;
 
 import br.com.elo7.sonda.candidato.constants.Direction;
+import io.swagger.annotations.ApiModel;
 
+@ApiModel("probe")
 public class ProbeRequestDTO {
     private CoordinateDTO coordinate;
     private Direction direction;
