@@ -1,5 +1,6 @@
 package br.com.elo7.sonda.candidato.model;
 
+import br.com.elo7.sonda.candidato.exception.ValidationException;
 import org.apache.commons.lang3.StringUtils;
 
 import java.util.Map;
@@ -18,13 +19,13 @@ public class ProbeCommands<String, Probe> implements Map.Entry<String, Probe> {
 
     private void validateKey(String key) {
         if (StringUtils.isBlank((CharSequence) key) || !StringUtils.containsOnly((CharSequence) key, "MLR")) {
-            throw new RuntimeException("Invalid commands");
+            throw new ValidationException("Invalid commands");
         }
     }
 
     private void validateValue(Probe value) {
         if (value == null) {
-            throw new RuntimeException("Invalid probe");
+            throw new ValidationException("Invalid probe");
         }
     }
 
