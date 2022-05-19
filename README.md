@@ -78,5 +78,32 @@ Com isso as dependências serão baixadas e a API subirá na porta `8080`;
 - Aqui você pode usar o Postman, por exemplo, ou o curl como abaixo:
 
 ```bash
-curl -X POST http://localhost:8080/planet-with-probes -H 'Content-Type: application/json' -d '{"width":10,"height":10,"probes":[{"x":1,"y":2,"direction":"N","commands": "LMLMLMLMM"},{"x":3,"y":3,"direction":"E","commands": "MMRMMRMRRM"}]}'
+curl -X POST http://localhost:8080/planet-with-probes -H 'Content-Type: application/json' -d '{"width":10,"height":10,"probes":[{"coordinate":{"x":1,"y":2},"direction":"NORTH","commands":"LMLMLMLMM"},{"coordinate":{"x":3,"y":3},"direction":"EAST","commands":"MMRMMRMRRM"}]}'
+```
+
+### Executando as aplicações de apoio do projeto
+
+Aplicações de apoio:
+- Sonarqube
+
+
+Executar o comando a seguir para iniciar o docker-compose:
+
+```base
+docker-compose up -d
+```
+
+### Fazendo análise estática de código
+
+- Certifique-se que o Sonarqube está sendo executado na porta 9000
+- Certifique-se que as variáveis de ambiente com as credenciais do Sonarqube estão configuradas: $SONAR_LOGIN e $SONAR_PASSWORD ou $SONAR_TOKEN
+
+Executar o comando a seguir:
+
+```bash
+# Sonarqube configurado por meio de usuário e senha
+mvn clean install sonar:sonar -Dsonar.login=$SONAR_LOGIN -Dsonar.password=$SONAR_PASSWORD
+
+# Sonarqube configurado por meio de token de acesso
+mvn clean install sonar:sonar -Dsonar.login=$SONAR_TOKEN
 ```
