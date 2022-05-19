@@ -19,7 +19,7 @@ public class ProbeCommands implements Map.Entry<String, Probe> {
     }
 
     private void validateKey(String key) {
-        if (StringUtils.isBlank((CharSequence) key) || !StringUtils.containsOnly((CharSequence) key, "MLR")) {
+        if (StringUtils.isBlank(key) || !StringUtils.containsOnly(key, "MLR")) {
             throw new ValidationException("Invalid commands");
         }
     }
