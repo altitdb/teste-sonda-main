@@ -17,14 +17,13 @@ public class LandProbeService {
     private Probes probesRepository;
 
     public List<Probe> probe(List<ProbeCommands> probes) {
-        List<Probe> executedMoves = probes.stream().map(register -> {
+        return probes.stream().map(register -> {
             Probe probe = register.getValue();
             probe.executeCommands(register.getKey().toCharArray());
             planetsRepository.save(probe.getPlanet());
+            probesRepository.save(probe);
             return probe;
         }).toList();
-        executedMoves.forEach(probe -> probesRepository.save(probe));
-        return executedMoves;
     }
 
 }
