@@ -3,15 +3,24 @@ package br.com.elo7.sonda.candidato.model;
 import br.com.elo7.sonda.candidato.constants.Command;
 import br.com.elo7.sonda.candidato.constants.Direction;
 
+import javax.persistence.*;
 import java.util.Objects;
 import java.util.UUID;
 
+@Entity
 public class Probe {
-    private UUID id;
 
+    @Id
+    private UUID id;
+    @ManyToOne(optional = false, cascade = CascadeType.MERGE)
     private Planet planet;
+    @Embedded
     private Coordinate coordinate;
+    @Column(nullable = false)
     private Direction direction;
+
+    protected Probe() {
+    }
 
     public Probe(Planet planet, Coordinate coordinate, Direction direction) {
         this.id = UUID.randomUUID();

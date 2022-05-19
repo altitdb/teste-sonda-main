@@ -5,9 +5,11 @@ import br.com.elo7.sonda.candidato.model.Coordinate;
 import br.com.elo7.sonda.candidato.model.Planet;
 import br.com.elo7.sonda.candidato.model.Probe;
 import br.com.elo7.sonda.candidato.model.ProbeCommands;
+import br.com.elo7.sonda.candidato.repository.ProbesRepository;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.boot.test.mock.mockito.MockBean;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -19,6 +21,9 @@ class LandProbeServiceTest {
 	
 	@Autowired
 	private LandProbeService subject;
+
+	@MockBean
+	private ProbesRepository probesRepository;
 
 	@Test
 	void should_move_land_probe() {

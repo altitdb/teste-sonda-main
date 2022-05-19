@@ -1,10 +1,18 @@
 package br.com.elo7.sonda.candidato.model;
 
+import javax.persistence.Column;
+import javax.persistence.Embeddable;
 import java.util.Objects;
 
+@Embeddable
 public class Coordinate {
+    @Column(nullable = false)
     private Integer x;
+    @Column(nullable = false)
     private Integer y;
+
+    protected Coordinate() {
+    }
 
     public Coordinate(Integer x, Integer y) {
         this.x = x;

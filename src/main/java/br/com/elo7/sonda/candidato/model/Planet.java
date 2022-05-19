@@ -1,12 +1,22 @@
 package br.com.elo7.sonda.candidato.model;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
 import java.util.Objects;
 import java.util.UUID;
 
+@Entity
 public class Planet {
+
+    @Id
     private UUID id;
+    @Column(nullable = false)
     private Integer width;
+    @Column(nullable = false)
     private Integer height;
+
+    protected Planet() {}
 
     public Planet(Integer height, Integer width) {
         this.id = UUID.randomUUID();
