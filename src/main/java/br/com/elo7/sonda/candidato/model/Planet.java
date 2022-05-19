@@ -1,5 +1,6 @@
 package br.com.elo7.sonda.candidato.model;
 
+import java.util.Objects;
 import java.util.UUID;
 
 public class Planet {
@@ -31,11 +32,10 @@ public class Planet {
     }
 
     @Override
-    public boolean equals(Object obj) {
-        if (obj instanceof Planet) {
-            return ((Planet) obj).id == this.id;
-        }
-        return false;
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Planet planet = (Planet) o;
+        return Objects.equals(id, planet.id) && Objects.equals(width, planet.width) && Objects.equals(height, planet.height);
     }
-
 }
