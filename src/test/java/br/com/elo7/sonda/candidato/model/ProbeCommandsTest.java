@@ -24,7 +24,7 @@ class ProbeCommandsTest {
     @ValueSource(strings = {"", "ABC", "LM LM"})
     void should_not_create_probe_with_invalid_command(String commands) {
         ValidationException exception = assertThrows(ValidationException.class, () ->
-                new ProbeCommands(commands, new Probe(null, null, null)));
+                new ProbeCommands(commands, null));
         Assertions.assertEquals("Invalid commands", exception.getMessage());
     }
 
