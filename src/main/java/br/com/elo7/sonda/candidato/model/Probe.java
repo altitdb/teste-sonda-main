@@ -3,6 +3,8 @@ package br.com.elo7.sonda.candidato.model;
 import br.com.elo7.sonda.candidato.constants.Command;
 import br.com.elo7.sonda.candidato.constants.Direction;
 import br.com.elo7.sonda.candidato.exception.ValidationException;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import javax.persistence.*;
 import java.util.Objects;
@@ -11,6 +13,7 @@ import java.util.UUID;
 @Entity
 public class Probe {
 
+    private static final Logger LOG = LoggerFactory.getLogger(Probe.class);
     @Id
     private UUID id;
     @ManyToOne(optional = false, cascade = CascadeType.MERGE)
@@ -76,6 +79,7 @@ public class Probe {
     }
 
     public void executeCommand(Command command) {
+        LOG.info("Processing command {} for probe {}", command, this.id);
         switch (command) {
             case R:
                 this.turnProbeRight();
@@ -90,6 +94,7 @@ public class Probe {
     }
 
     private void moveProbeForward() {
+        LOG.debug("Probe with direction: {}", this.direction);
         switch (this.direction) {
             case NORTH:
                 this.coordinate.addPositionY();
@@ -107,6 +112,7 @@ public class Probe {
     }
 
     private void turnProbeLeft() {
+        LOG.debug("Direction before (left): {}", this.direction);
         switch (this.direction) {
             case NORTH:
                 this.direction = Direction.WEST;
@@ -121,9 +127,11 @@ public class Probe {
                 this.direction = Direction.NORTH;
                 break;
         }
+        LOG.debug("Direction after (left): {}", this.direction);
     }
 
     private void turnProbeRight() {
+        LOG.debug("Direction before (right): {}", this.direction);
         switch (this.direction) {
             case NORTH:
                 this.direction = Direction.EAST;
@@ -138,6 +146,7 @@ public class Probe {
                 this.direction = Direction.NORTH;
                 break;
         }
+        LOG.debug("Direction after (right): {}", this.direction);
     }
 
     @Override
