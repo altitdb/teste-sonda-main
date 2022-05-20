@@ -2,6 +2,7 @@ package br.com.elo7.sonda.candidato.model;
 
 import br.com.elo7.sonda.candidato.constants.Command;
 import br.com.elo7.sonda.candidato.constants.Direction;
+import br.com.elo7.sonda.candidato.exception.ValidationException;
 
 import javax.persistence.*;
 import java.util.Objects;
@@ -23,10 +24,33 @@ public class Probe {
     }
 
     public Probe(Planet planet, Coordinate coordinate, Direction direction) {
+        validateRequired(planet, coordinate, direction);
+        validateCoordinatesInPlanet(planet, coordinate);
         this.id = UUID.randomUUID();
         this.planet = planet;
         this.coordinate = coordinate;
         this.direction = direction;
+    }
+
+    private void validateCoordinatesInPlanet(Planet planet, Coordinate coordinate) {
+        if (planet.getHeight() < coordinate.getX()) {
+            throw new ValidationException(String.format("Coordinate x '%s' cannot be greater than height '%s'", coordinate.getX(), planet.getHeight()));
+        }
+        if (planet.getWidth() < coordinate.getY()) {
+            throw new ValidationException(String.format("Coordinate y '%s' cannot be greater than width '%s'", coordinate.getY(), planet.getWidth()));
+        }
+    }
+
+    private void validateRequired(Planet planet, Coordinate coordinate, Direction direction) {
+        if (planet == null) {
+            throw  new ValidationException("Planet is required");
+        }
+        if (coordinate == null) {
+            throw  new ValidationException("Coordinate is required");
+        }
+        if (direction == null) {
+            throw  new ValidationException("Direction is required");
+        }
     }
 
     public UUID getId() {

@@ -1,5 +1,7 @@
 package br.com.elo7.sonda.candidato.model;
 
+import br.com.elo7.sonda.candidato.exception.ValidationException;
+
 import javax.persistence.Column;
 import javax.persistence.Embeddable;
 import java.util.Objects;
@@ -15,6 +17,12 @@ public class Coordinate {
     }
 
     public Coordinate(Integer x, Integer y) {
+        if (x == null) {
+            throw new ValidationException("Position x is required");
+        }
+        if (y == null) {
+            throw new ValidationException("Position y is required");
+        }
         this.x = x;
         this.y = y;
     }

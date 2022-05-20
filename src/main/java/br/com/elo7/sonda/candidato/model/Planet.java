@@ -1,5 +1,7 @@
 package br.com.elo7.sonda.candidato.model;
 
+import br.com.elo7.sonda.candidato.exception.ValidationException;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -16,9 +18,16 @@ public class Planet {
     @Column(nullable = false)
     private Integer height;
 
-    protected Planet() {}
+    protected Planet() {
+    }
 
     public Planet(Integer height, Integer width) {
+        if (height == null) {
+            throw new ValidationException("Height is required");
+        }
+        if (width == null) {
+            throw new ValidationException("Width is required");
+        }
         this.id = UUID.randomUUID();
         this.width = width;
         this.height = height;

@@ -26,7 +26,7 @@ public class ProbeCommands implements Map.Entry<String, Probe> {
 
     private void validateValue(Probe value) {
         if (value == null) {
-            throw new ValidationException("Invalid probe");
+            throw new ValidationException("Probe is required");
         }
     }
 
