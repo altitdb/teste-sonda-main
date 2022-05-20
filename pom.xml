@@ -14,7 +14,6 @@
 	<description>Projeto para teste dos candidatos</description>
 	<properties>
 		<java.version>17</java.version>
-		<modelmapper.version>2.4.5</modelmapper.version>
 		<commons-lang3.version>3.12.0</commons-lang3.version>
 		<jacoco.version>0.8.8</jacoco.version>
 		<swagger.version>3.0.0</swagger.version>
@@ -42,11 +41,6 @@
 			<groupId>com.google.guava</groupId>
 			<artifactId>guava-collections</artifactId>
 			<version>r03</version>
-		</dependency>
-		<dependency>
-			<groupId>org.modelmapper</groupId>
-			<artifactId>modelmapper</artifactId>
-			<version>${modelmapper.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.apache.commons</groupId>

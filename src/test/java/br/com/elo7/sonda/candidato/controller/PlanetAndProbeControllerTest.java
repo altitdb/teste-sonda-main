@@ -46,21 +46,13 @@ class PlanetAndProbeControllerTest {
     }
 
     @Test
-    void should_return_ok_when_informe_probes() throws Exception {
+    void should_return_ok_when_inform_probes() throws Exception {
         ObjectMapper mapper = new ObjectMapper();
         mapper.configure(SerializationFeature.WRAP_ROOT_VALUE, false);
         ObjectWriter ow = mapper.writer().withDefaultPrettyPrinter();
-        PlanetProbesRequestDTO probesRequestDTO = new PlanetProbesRequestDTO();
-        probesRequestDTO.setHeight(10);
-        probesRequestDTO.setWidth(10);
-        ProbeRequestDTO probeRequestDTO = new ProbeRequestDTO();
-        probeRequestDTO.setCommands("LMLMLMLMM");
-        CoordinateDTO coordinateDTO = new CoordinateDTO();
-        coordinateDTO.setX(1);
-        coordinateDTO.setY(2);
-        probeRequestDTO.setCoordinate(coordinateDTO);
-        probeRequestDTO.setDirection(Direction.NORTH);
-        probesRequestDTO.setProbes(new ArrayList<>(Collections.singleton(probeRequestDTO)));
+        CoordinateDTO coordinateDTO = new CoordinateDTO(1, 2);
+        ProbeRequestDTO probeRequestDTO = new ProbeRequestDTO(coordinateDTO, Direction.NORTH, "LMLMLMLMM");
+        PlanetProbesRequestDTO probesRequestDTO = new PlanetProbesRequestDTO(10, 10, new ArrayList<>(Collections.singleton(probeRequestDTO)));
 
         List<Probe> probeCommandsList2 = new ArrayList<>();
         Probe probe2 = new Probe(new Planet(10, 10), new Coordinate(1, 3), Direction.NORTH);
