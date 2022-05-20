@@ -1,0 +1,18 @@
+- Adicionar Dockerfile;
+- Adicionar mais logs;
+- Adicionar Integração Continua
+- Adicionar Interceptor de logs de requests
+- Adicionar testes de contrato
+- Adicionar testes de stress
+- Estudar viabilidade de outras bases (escrita / leitura)
+- Adicionar novas regras de negócio
+- Adicionar mais detalhes na documentação (relacionado aos campos das APIs)
+- Adicionar versionamento nas APIs
+- Alterar de Maven para Gradle
+- Versionamento das dependencias (atualmente esta latest)
+- Especializar exceções
+- Tratamento padrão para retorno de exceções
+- Criação de profiles para ambiente local, staging e produção
+- Adicionar validações usando java bean validators
+- Adicionar especificações nas entidades JPA
+- Adicionar modelo transacional

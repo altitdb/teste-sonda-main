@@ -107,3 +107,7 @@ mvn clean install sonar:sonar -Dsonar.login=$SONAR_LOGIN -Dsonar.password=$SONAR
 # Sonarqube configurado por meio de token de acesso
 mvn clean install sonar:sonar -Dsonar.login=$SONAR_TOKEN
 ```
+
+### Sugestões de melhoria
+
+[Lista de TODOs](todo.md)
